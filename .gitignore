@@ -13,8 +13,12 @@
 /.next/
 /out/
 
+.editorconfig
 # production
 /build
+/dist
+/cobra
+cobra
 
 # misc
 .DS_Store
@@ -35,3 +39,15 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+dist
+yarn.lock
+
+
+/public/sw.js
+/public/workbox-*.js
+/puymlblic/worker-*.js
+/public/sw.js.map
+/public/workbox-*.js.map
+/public/worker-*.js.map
+.gitlab-ci.

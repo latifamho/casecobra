@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  distDir: "cobra",
   typescript: {
     ignoreBuildErrors: true,
   },
