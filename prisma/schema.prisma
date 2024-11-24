@@ -1,13 +1,6 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
   provider = "prisma-client-js"
-    previewFeatures = ["metrics"]
-  log = ["query", "info", "warn", "error"]
 }
 
 
@@ -15,8 +8,6 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
-
-
 
 enum OrderStatus {
   fulfilled
@@ -77,16 +68,16 @@ model Order {
   configurationId String
   configuration   configuration @relation(fields: [configurationId], references: [id])
 
-  user            User          @relation(fields: [userId], references: [id])
   userId          String
+  user            User          @relation(fields: [userId], references: [id])
   
   amount          Float
   isPaid          Boolean       @default(false)
   status          OrderStatus   @default(awaiting_shipment)
-  shippingAddressId String?
   shippingAddress   ShippingAddress? @relation(fields: [shippingAddressId], references: [id])
-  billingAddressId  String?
+  shippingAddressId String?
   billingAddress    BillingAddress?  @relation(fields: [billingAddressId], references: [id])
+  billingAddressId  String?
 
   createdAt DateTime @default(now())
   updated   DateTime @updatedAt
